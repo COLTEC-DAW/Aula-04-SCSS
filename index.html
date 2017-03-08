@@ -1,0 +1,717 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+  <title>CSS</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=792, user-scalable=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <link rel="stylesheet" href="libs/shower/themes/bright/styles/screen.css">
+	<link rel="stylesheet" href="libs/highlight/styles/default.css">
+	<link rel="stylesheet" type="text/css" href="css/960gs.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+  </head>
+  <body class="list">
+    <header class="caption">
+      <h1>Sass/SCSS</h1>
+      <p>Desenvolvimento de Aplicações Web - COLTEC/MG</p>
+    </header>
+    <section class="slide cover" id="Cover">
+      <div>
+        <h2>Sass/SCSS</h2>
+        <p>João Eduardo Montandon</p>
+        <p>Desenvolvimento de Aplicações Web - COLTEC/MG</p>
+        <img src="images/wallpaper_coltec_wide.png" alt="" />
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Introdução</h2>
+        <p>
+          A linguagem CSS foi uma solução <b>simples</b> e elegante para separar estrutura e apresentação de páginas web
+        </p>
+        <q>
+          Escalar simplicidade é difícil
+        </q>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Introdução</h2>
+        <p><b>Principais problemas:</b></p>
+        <ul>
+          <li>Pequenas diferenciações não previstas entre propriedades da página</li>
+          <li><code>Ctrl + C</code> & <code>Ctrl + V</code></li>
+          <li>Difícil manutenção (arquivos enormes)</li>
+        </ul>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Sass</h2>
+        <p><b>S</b>ynthatically <b>A</b>wesome <b>S</b>tyle<b>s</b>heets</p>
+        <p>Extensão da linguagem CSS com recursos de linguagens de programação</p>
+        <img src="images/sass.jpg" style="margin:auto; display: block;" alt="">
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Sass</h2>
+        <p>Trabalha na forma de pré-processamento (compila o código de Sass para CSS)</p>
+        <ul>
+          <li>Variáveis</li>
+          <li>Aninhamento</li>
+          <li>Herança</li>
+          <li>Estruturas de Controle</li>
+          <li>...</li>
+        </ul>
+      </div>
+    </section>
+    <section class="slide">
+      <div class="container_12">
+        <h2>Sass -- Exemplo</h2>
+        <div class="grid_6">
+          <pre>
+            <code>
+$font-stack: Helvetica;
+$primary-color: #333;
+body {
+ font: 100% $font-stack;
+ color: $primary-color;
+}
+            </code>
+          </pre>
+        </div>
+        <div class="grid_6">
+          <pre>
+            <code>
+body {
+ font: 100% Helvetica;
+ color: #333;
+}
+            </code>
+          </pre>
+        </div>
+        <div class="grid_8 prefix_2">
+          <code style="text-align: center">$ sass estilo.scss estilo.css</code>
+        </div>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Instalação & Execução</h2>
+        <ol>
+          <li>Instalar Ruby na máquina</li>
+          <li>Instalar pelo gerenciador de pacotes: <code>$ gem install sass</code></li>
+          <li>Executar <code>$ sass input.scss output.css</code> para compilar</li>
+        </ol>
+        <p>Para mais informações, consulte este <a href="http://sass-lang.com/install">link</a></p>
+      </div>
+    </section>
+    <section class="slide section">
+      <div>
+        <h2>Variáveis</h2>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Variáveis</h2>
+        <p>Variáveis podem ser utilizadas para armazenar informações a serem reaprovitadas durante escrita do CSS, tais como cores, fontes, tamanho, etc.</p>
+        <pre>
+          <code>
+            $variavel: valor;
+          </code>
+        </pre>
+      </div>
+    </section>
+    <section class="slide">
+      <div class="container_12">
+        <h2>Variáveis</h2>
+        <div class="grid_8">
+          <pre>
+            <code>
+$font-stack: Helvetica; /* fonte padrão */
+$primary-color: #333; /* cor principal */
+body {
+ font: 100% $font-stack;
+ color: $primary-color;
+}
+            </code>
+          </pre>
+        </div>
+        <div class="grid_4">
+          <pre>
+            <code>
+body {
+ font: 100% Helvetica;
+ color: #333;
+}
+            </code>
+          </pre>
+        </div>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Variáveis -- Interpolação</h2>
+        <p>
+          Também é possível utilizar variáveis para interpolar nomes de propriedades e seletores
+        </p>
+        <p>
+          Para isso, usa-se o símbolo <code>#{$variavel}</code>
+        </p>
+      </div>
+    </section>
+    <section class="slide">
+      <div class="container_12">
+        <h2>Variáveis -- Interpolação</h2>
+        <div class="grid_8">
+          <pre>
+            <code>
+$name: foo; /* nome a ser interpolado */
+$attr: border; /* propriedade a ser interpolada */
+p.#{$name} {
+  #{$attr}-color: blue;
+}
+            </code>
+          </pre>
+        </div>
+        <div class="grid_4">
+          <pre>
+            <code>
+p.foo {
+  border-color: blue;
+}
+            </code>
+          </pre>
+        </div>
+      </div>
+    </section>
+    <section class="slide section">
+      <div>
+        <h2>Aninhamento</h2>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Aninhamento</h2>
+        <p>
+          Assim como acontece no HTML, é possível fazer aninhamento dos seletores
+        </p>
+        <p>
+          O aninhamento evita a necessidade de se redeclarar seletores para regras específicas
+        </p>
+        <p>
+          Também é possível aninhar media queries!!
+        </p>
+      </div>
+    </section>
+    <section class="slide">
+      <div class="container_12">
+        <div class="grid_6">
+          <pre>
+            <code>nav {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li { display: inline-block; }
+
+  a {
+    display: block;
+    padding: 6px 12px;
+    text-decoration: none;
+  }
+}
+            </code>
+          </pre>
+        </div>
+        <div class="grid_6">
+          <pre>
+            <code>nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav li {
+  display: inline-block;
+}
+
+nav a {
+  display: block;
+  padding: 6px 12px;
+  text-decoration: none;
+}
+            </code>
+          </pre>
+        </div>
+      </div>
+    </section>
+    <section class="slide">
+      <div class="container_12">
+        <div class="grid_8 prefix_2">
+          <pre>
+            <code>.sidebar {
+  width: 300px;
+  @media screen and (orientation: landscape) {
+    width: 500px;
+  }
+}</code>
+          </pre>
+        </div>
+        <div class="grid_8 prefix_2">
+          <pre>
+            <code>.sidebar {
+  width: 300px;
+}
+@media screen and (orientation: landscape) {
+  .sidebar {
+    width: 500px;
+  }
+}</code>
+          </pre>
+        </div>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Aninhamento -- O operador <code>&</code></h2>
+        <p>Utilizamos o símbolo <code>&</code> para obter o nome do seletor <b>pai</b></p>
+        <div class="container_12">
+          <div class="grid_6">
+            <pre>
+              <code>a {
+  font-weight: bold;
+  text-decoration: none;
+  <mark>&</mark>:hover {
+    text-decoration: underline;
+  }
+  body.firefox <mark>&</mark> {
+    font-weight: normal;
+  }
+}
+              </code>
+            </pre>
+          </div>
+          <div class="grid_6">
+            <pre>
+              <code>a {
+  font-weight: bold;
+  text-decoration: none;
+}
+<mark>a</mark>:hover {
+  text-decoration: underline;
+}
+body.firefox <mark>a</mark> {
+  font-weight: normal;
+}
+              </code>
+            </pre>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="slide section">
+      <div>
+        <h2>Partials & Mixins</h2>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Partials</h2>
+        <p>Recurso que permite importar arquivos SCSS em outros arquivos</p>
+        <p>Os partials devem se iniciar sempre com <i>underline</i></p>
+      </div>
+    </section>
+    <section class="slide">
+      <div class="container_12">
+        <div class="grid_6">
+          <div class="grid_12">
+            <pre>
+              <code>/* _reset.scss */
+html, body, ul, ol {
+   margin: 0;
+  padding: 0;
+}
+              </code>
+            </pre>
+          </div>
+          <div class="grid_12">
+            <pre>
+              <code>/* base.scss */
+@import 'reset';
+body {
+  font: 100% Helvetica, sans-serif;
+  background-color: #efefef;
+}
+              </code>
+            </pre>
+          </div>
+        </div>
+        <div class="grid_6">
+          <pre>
+            <code>/* base.css */
+html, body, ul, ol {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font: 100% Helvetica, sans-serif;
+  background-color: #efefef;
+}
+            </code>
+          </pre>
+        </div>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Mixins</h2>
+        <p>
+          Permite a criação de grupos de comandos para serem utilizados posteriormente
+        </p>
+        <p>
+          Útil principalmente em situações onde é necessário implementar rotinas de compatibilidade
+        </p>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Mixins</h2>
+        <div class="container_12">
+          <div class="grid_7">
+            <pre>
+              <code>@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+.box {
+  @include border-radius(10px);
+}
+              </code>
+            </pre>
+          </div>
+          <div class="grid_5">
+            <pre>
+              <code>.box {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px;
+}
+              </code>
+            </pre>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="slide section">
+      <div>
+        <h2>Herança</h2>
+        <p>Permite que você "herde" as propriedades de um componente em outro</p>
+        <p>A herança ocorre por meio do comando <code>@extend</code></p>
+      </div>
+    </section>
+    <section class="slide">
+      <div class="container_12">
+        <div class="grid_6">
+          <pre>
+            <code>
+.message {
+  border: 1px solid #ccc;
+  padding: 10px;
+  color: #333;
+}
+.success {
+  <mark>@extend .message;</mark>
+  border-color: green;
+}
+.error {
+  <mark>@extend .message;</mark>
+  border-color: red;
+}
+            </code>
+          </pre>
+        </div>
+        <div class="grid_6">
+          <pre>
+            <code>
+.message, <mark>.success</mark>, <mark>.error</mark> {
+  border: 1px solid #cccccc;
+  padding: 10px;
+  color: #333;
+}
+.success {
+  border-color: green;
+}
+.error {
+  border-color: red;
+}
+            </code>
+          </pre>
+        </div>
+      </div>
+    </section>
+    <section class="slide section">
+      <div>
+        <h2>Operadores & Funções</h2>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Operadores</h2>
+        <p>
+          É possível utilizar as operações matemáticas básicas para calcular valores fornecidos para as propriedades
+        </p>
+        <div class="container_12">
+          <div class="grid_2 prefix_9">
+            <table style="text-align: center">
+              <tr><td><b>Operadores</b></td></tr>
+              <tr><td>+</td></tr>
+              <tr><td>-</td></tr>
+              <tr><td>/</td></tr>
+              <tr><td>*</td></tr>
+              <tr><td>%</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="slide">
+      <div class="container_12">
+        <div class="grid_6">
+          <pre>
+            <code>.container {
+  width: 100%;
+}
+
+article {
+  float: left;
+  width: <mark>600px / 960px * 100%;</mark>
+}
+
+aside {
+  float: right;
+  width: <mark>300px / 960px * 100%;</mark>
+}
+            </code>
+          </pre>
+        </div>
+        <div class="prefix_6">
+          <pre>
+            <code>.container {
+  width: 100%;
+}
+
+article {
+  float: left;
+  width: <mark>62.5%;</mark>
+}
+
+aside {
+  float: right;
+  width: <mark>31.25%;</mark>
+}
+            </code>
+          </pre>
+        </div>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Funções</h2>
+        <p>
+          São disponiblizadas várias funções <i>built-in</i> que podem ser úteis durante a implementação do CSS
+        </p>
+        <table style="text-align: center">
+          <tr>
+            <td><b>Função</b></td>
+            <td><b>Exemplo</b></td>
+          </tr>
+          <tr>
+            <td><code>lighten</code></td>
+            <td><code>lighten(#000, 20%)</code></td>
+          </tr>
+          <tr>
+            <td><code>darken</code></td>
+            <td><code>darken(#FFF, 20%)</code></td>
+          </tr>
+          <tr>
+            <td><code>round</code></td>
+            <td><code>round(10.66666px)</code></td>
+          </tr>
+          <tr>
+            <td><code>percentage</code></td>
+            <td><code>percentage(16px / 32px)</code></td>
+          </tr>
+        </table>
+        <p>
+          Lista completa pode ser vista <a href="http://sass-lang.com/documentation/Sass/Script/Functions.html">aqui</a>
+        </p>
+      </div>
+    </section>
+    <section class="slide section">
+      <div>
+        <h2>Estruturas de Controle</h2>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Estruturas Condicionais</h2>
+        <p>O Sass fornece estruturas condicionais onde pode-se determinar propriedades com base em determinados cenários</p>
+        <pre>
+          <code>@if expressao {
+  comandos;
+  comandos;
+} @else if expressao {
+  comandos;
+}
+          </code>
+        </pre>
+      </div>
+    </section>
+    <section class="slide">
+      <div class="container_12">
+        <div class="grid_6">
+          <pre>
+            <code>
+/* arquivo.scss */
+p {
+  @if 1 + 1 == 2 {
+    border: 1px solid;
+  }
+  @if 5 < 3 {
+    border: 2px dotted;
+  }
+  @if null {
+    border: 3px double;
+  }
+}
+            </code>
+          </pre>
+        </div>
+        <div class="grid_6">
+          <pre>
+            <code>
+/* arquivo.css */
+p {
+  border: 1px solid;
+}
+            </code>
+          </pre>
+        </div>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Estruturas de Repetição</h2>
+        <p>O Sass fornece suporte as estruturas de repetição clássicas:</p>
+        <ul>
+          <li><code>@for</code> para iteração de forma controlada</li>
+          <li><code>@each</code> para iteração sobre coleções e arrays</li>
+          <li><code>@while</code> para iteração indeterminada</li>
+        </ul>
+      </div>
+    </section>
+    <section class="slide">
+      <div class="container_12">
+        <h2>Estruturas de Repetição: <code>@for</code></h2>
+        <div class="grid_7">
+          <pre>
+            <code>
+@for $i from 1 to 3 {
+  .item-#{$i} { width: 2em * $i; }
+}
+            </code>
+          </pre>
+        </div>
+        <div class="grid_5">
+          <pre>
+            <code>
+.item-1 {
+  width: 2em;
+}
+.item-2 {
+  width: 4em;
+}
+.item-3 {
+  width: 6em;
+}
+            </code>
+          </pre>
+        </div>
+      </div>
+    </section>
+    <section class="slide">
+      <div class="container_12">
+        <h2>Estruturas de Repetição: <code>@each</code></h2>
+        <div class="grid_12">
+          <pre>
+            <code>@each $animal in puma, sea-slug, egret {
+  .#{$animal}-icon {
+    background-image: url('/images/#{$animal}.png');
+  }
+}</code>
+          </pre>
+        </div>
+        <div class="grid_12">
+          <pre>
+            <code>.puma-icon { background-image: url('/images/puma.png'); }
+.sea-slug-icon { background-image: url('/images/sea-slug.png'); }
+.egret-icon { background-image: url('/images/egret.png'); }
+            </code>
+          </pre>
+        </div>
+      </div>
+    </section>
+    <section class="slide">
+      <div class="container_12">
+        <h2>Estruturas de Repetição: <code>@while</code></h2>
+        <div class="grid_7">
+          <pre>
+            <code>
+$i: 6;
+@while $i > 0 {
+  .item-#{$i} { width: 2em * $i; }
+  $i: $i - 2;
+}
+            </code>
+          </pre>
+        </div>
+        <div class="grid_5">
+          <pre>
+            <code>
+.item-6 {
+  width: 12em;
+}
+.item-4 {
+  width: 8em;
+}
+.item-2 {
+  width: 4em;
+}
+            </code>
+          </pre>
+        </div>
+      </div>
+    </section>    
+    <section class="slide">
+      <div>
+        <h2>Referências</h2>
+        <p><a href="http://sass-lang.com/">Site Oficial</a></p>
+        <p><a href="http://leveluptuts.com/tutorials/sass-tutorials">Levelup Tuts - Sass Tutorials</a></p>
+        <p><a href="http://thesassway.com/advanced/pure-sass-functions">The Sass Way</a></p>
+      </div>
+    </section>
+    <p class="badge"><a href="https://github.com/shower/shower">Fork me on Github</a></p>
+    <div class="progress"><div></div></div>
+    <script src="libs/shower/shower.min.js"></script>
+    <script src="libs/highlight/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
